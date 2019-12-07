@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GitHub Demo App</string>
+    <string name="commits">Commits:</string>
+    <string name="open_issues">open issues</string>
+    <string name="no_commits_for_this_repo">No commits for this repo</string>
+    <string name="author">Author</string>
+    <string name="committer">Committer</string>
+    <string name="message">Message</string>
+    <string name="comments_on_this_commit">comments on this commit</string>
 </resources>
