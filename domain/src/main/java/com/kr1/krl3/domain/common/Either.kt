@@ -1,4 +1,4 @@
-package com.kr1.krl3.domain
+package com.kr1.krl3.domain.common
 
 sealed class Either<out L, out R> {
     data class Left<out L>(val failure: L) : Either<L, Nothing>()

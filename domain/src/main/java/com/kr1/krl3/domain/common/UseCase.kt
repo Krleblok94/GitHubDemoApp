@@ -1,4 +1,4 @@
-package com.kr1.krl3.domain
+package com.kr1.krl3.domain.common
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

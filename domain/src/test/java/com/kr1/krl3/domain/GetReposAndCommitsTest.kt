@@ -1,8 +1,10 @@
 package com.kr1.krl3.domain
 
+import com.kr1.krl3.domain.common.Either
+import com.kr1.krl3.domain.common.Failure
+import com.kr1.krl3.domain.common.UseCase.None
 import com.kr1.krl3.domain.entities.Commit
 import com.kr1.krl3.domain.entities.Repo
-import com.kr1.krl3.domain.repository.CommitsRepository
 import com.kr1.krl3.domain.repository.RepoRepository
 import com.kr1.krl3.domain.usecase.GetReposAndCommits
 import io.mockk.coEvery
@@ -16,8 +18,6 @@ import org.junit.jupiter.api.Test
 class GetReposAndCommitsTest {
 
     private val repoRepository = mockk<RepoRepository>()
-    private val commitsRepository = mockk<CommitsRepository>()
-    private val getReposParams = mockk<GetReposAndCommits.GetReposParams>()
 
     private val repo = mockk<Repo>()
     private val commit = mockk<Commit>()
@@ -32,17 +32,14 @@ class GetReposAndCommitsTest {
     @BeforeEach
     fun setUp() {
         every { repo.name } returns repoName
-        every { commit.commit?.message } returns commitMessage
-
-        every { getReposParams.username } returns "Some username"
-        every { getReposParams.commitsRepository } returns commitsRepository
+        every { commit.commit.message } returns commitMessage
     }
 
     @Test
     fun `when getRepos succeeds, repo data is in callback`() = runBlocking<Unit> {
         setUpCallback(Either.Right(reposAndCommits))
 
-        getReposAndCommits(getReposParams, this) {
+        getReposAndCommits(None(), this) {
             for (repo in it.getSuccessData().keys) {
                 assertEquals(repoName, repo.name)
             }
@@ -53,9 +50,9 @@ class GetReposAndCommitsTest {
     fun `when getRepos succeeds, commit data is in callback`() = runBlocking<Unit> {
         setUpCallback(Either.Right(reposAndCommits))
 
-        getReposAndCommits(getReposParams, this) {
+        getReposAndCommits(None(), this) {
             for (commit in it.getSuccessData().values) {
-                assertEquals(commitMessage, commit[0].commit?.message)
+                assertEquals(commitMessage, commit[0].commit.message)
             }
         }
     }
@@ -64,12 +61,12 @@ class GetReposAndCommitsTest {
     fun `when getRepos fails, failure data is in callback`() = runBlocking<Unit> {
         setUpCallback(Either.Left(Failure.NetworkFailure(errorMessage)))
 
-        getReposAndCommits(getReposParams, this) {
+        getReposAndCommits(None(), this) {
             assertEquals(errorMessage, it.getFailureData().getMessage())
         }
     }
 
     private fun setUpCallback(response: Either<Failure, Map<Repo, List<Commit>>>) {
-        coEvery { repoRepository.getRepos(any(), any()) } returns response
+        coEvery { repoRepository.getRepos() } returns response
     }
 }

@@ -1,6 +1,6 @@
 package com.kr1.krl3.domain
 
-import com.kr1.krl3.domain.Failure.*
+import com.kr1.krl3.domain.common.Failure.*
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 

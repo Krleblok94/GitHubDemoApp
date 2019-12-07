@@ -1,7 +1,8 @@
 package com.kr1.krl3.domain
 
-import com.kr1.krl3.domain.Either.*
-import com.kr1.krl3.domain.Failure.*
+import com.kr1.krl3.domain.common.Either.Left
+import com.kr1.krl3.domain.common.Either.Right
+import com.kr1.krl3.domain.common.Failure.NetworkFailure
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions
