@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.kr1.krl3.githubdemoapp.R
+import com.kr1.krl3.githubdemoapp.common.VisibilitySwitcher
 import com.kr1.krl3.githubdemoapp.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

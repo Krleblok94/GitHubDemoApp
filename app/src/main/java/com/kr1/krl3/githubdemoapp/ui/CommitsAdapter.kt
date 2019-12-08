@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kr1.krl3.githubdemoapp.R
+import com.kr1.krl3.githubdemoapp.common.DateConverter
 import com.kr1.krl3.githubdemoapp.datasource.model.view.CommitView
 import kotlinx.android.synthetic.main.adapter_commits.view.*
 
@@ -25,11 +26,11 @@ class CommitsAdapter(private val commitsList: List<CommitView>) : RecyclerView.A
 
         holder.tvAuthorName.text = commit.authorName
         holder.tvAuthorEmail.text = commit.authorEmail
-        holder.tvAuthorDate.text = commit.authorDate
+        holder.tvAuthorDate.text = DateConverter.convertDate(commit.authorDate)
 
         holder.tvCommitterName.text = commit.committerName
         holder.tvCommitterEmail.text = commit.committerEmail
-        holder.tvCommitterDate.text = commit.committerDate
+        holder.tvCommitterDate.text = DateConverter.convertDate(commit.committerDate)
 
         holder.tvCommitMessage.text = commit.message
         holder.tvCommentCount.text = commit.comment_count

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kr1.krl3.githubdemoapp.R
+import com.kr1.krl3.githubdemoapp.common.VisibilitySwitcher
 import com.kr1.krl3.githubdemoapp.viewmodel.ReposViewModel
 import kotlinx.android.synthetic.main.activity_repos.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

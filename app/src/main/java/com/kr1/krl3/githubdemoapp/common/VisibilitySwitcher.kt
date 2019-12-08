@@ -1,4 +1,4 @@
-package com.kr1.krl3.githubdemoapp.ui
+package com.kr1.krl3.githubdemoapp.common
 
 import android.view.View
 
