@@ -1,23 +1,12 @@
 package com.kr1.krl3.domain.entities
 
 data class Commit(
-    val commit: CommitX
-)
-
-data class CommitX(
-    val author: Author,
-    val committer: Committer,
+    val authorName: String,
+    val authorEmail: String,
+    val authorDate: String,
+    val committerName: String,
+    val committerEmail: String,
+    val committerDate: String,
     val message: String,
-    val comment_count: Int)
-
-data class Author(
-    val name: String,
-    val email: String,
-    val date: String
-)
-
-data class Committer(
-    val name: String,
-    val email: String,
-    val date: String
+    val comment_count: Int
 )

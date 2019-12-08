@@ -35,8 +35,8 @@ class CommitsRepositoryTest {
 
     @BeforeEach
     fun setUp() {
-        every { apiCommit.commit?.message } returns apiCommitMessage
-        every { dbCommit.commit?.message } returns dbCommitMessage
+        every { apiCommit.message } returns apiCommitMessage
+        every { dbCommit.message } returns dbCommitMessage
         coEvery { localDataSource.saveCommits(any(), any()) } just Runs
     }
 
@@ -45,7 +45,7 @@ class CommitsRepositoryTest {
         setUpNetworkDataSourceResponse(Right(apiCommits))
         val result = commitsRepository.getCommits(repoName)
 
-        assertEquals(apiCommitMessage, result.getSuccessData()[0].commit?.message)
+        assertEquals(apiCommitMessage, result.getSuccessData()[0].message)
         coVerify { localDataSource.saveCommits(any(), any()) }
     }
 
@@ -64,7 +64,7 @@ class CommitsRepositoryTest {
 
         val result = commitsRepository.getCommits(repoName)
 
-        assertEquals(dbCommitMessage, result.getSuccessData()[0].commit?.message)
+        assertEquals(dbCommitMessage, result.getSuccessData()[0].message)
         coVerify(exactly = 0) { localDataSource.saveCommits(any(), any()) }
     }
 

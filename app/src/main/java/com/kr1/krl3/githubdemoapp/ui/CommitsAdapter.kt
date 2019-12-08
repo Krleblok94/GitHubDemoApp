@@ -21,17 +21,15 @@ class CommitsAdapter(private val commitsList: List<CommitView>) : RecyclerView.A
     override fun getItemCount() = commitsList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val commit = commitsList[position].commit
-        val author = commit.author
-        val committer = commit.committer
+        val commit = commitsList[position]
 
-        holder.tvAuthorName.text = author.name
-        holder.tvAuthorEmail.text = author.email
-        holder.tvAuthorDate.text = author.date
+        holder.tvAuthorName.text = commit.authorName
+        holder.tvAuthorEmail.text = commit.authorEmail
+        holder.tvAuthorDate.text = commit.authorDate
 
-        holder.tvCommitterName.text = committer.name
-        holder.tvCommitterEmail.text = committer.email
-        holder.tvCommitterDate.text = committer.date
+        holder.tvCommitterName.text = commit.committerName
+        holder.tvCommitterEmail.text = commit.committerEmail
+        holder.tvCommitterDate.text = commit.committerDate
 
         holder.tvCommitMessage.text = commit.message
         holder.tvCommentCount.text = commit.comment_count

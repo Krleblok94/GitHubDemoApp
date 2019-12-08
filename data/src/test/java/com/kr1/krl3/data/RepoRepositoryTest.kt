@@ -40,8 +40,8 @@ class RepoRepositoryTest {
     fun setUp() {
         every { repo1.name } returns repo1Name
         every { repo2.name } returns repo2Name
-        every { commit1.commit?.message } returns commit1Message
-        every { commit2.commit?.message } returns commit2Message
+        every { commit1.message } returns commit1Message
+        every { commit2.message } returns commit2Message
 
         coEvery { localDataSource.saveRepos(any()) } just Runs
     }
@@ -97,8 +97,8 @@ class RepoRepositoryTest {
         assertEquals(repos.elementAt(1).name, repo2Name)
 
         assertTrue(repo1Commits?.size == 2)
-        assertEquals(repo1Commits?.get(0)?.commit?.message, commit1Message)
-        assertEquals(repo1Commits?.get(1)?.commit?.message, commit2Message)
+        assertEquals(repo1Commits?.get(0)?.message, commit1Message)
+        assertEquals(repo1Commits?.get(1)?.message, commit2Message)
     }
 
     @Test
@@ -117,8 +117,8 @@ class RepoRepositoryTest {
         assertEquals(repos.elementAt(1).name, repo2Name)
 
         assertTrue(repo2Commits?.size == 2)
-        assertEquals(repo2Commits?.get(0)?.commit?.message, commit1Message)
-        assertEquals(repo2Commits?.get(1)?.commit?.message, commit2Message)
+        assertEquals(repo2Commits?.get(0)?.message, commit1Message)
+        assertEquals(repo2Commits?.get(1)?.message, commit2Message)
     }
 
     @Test

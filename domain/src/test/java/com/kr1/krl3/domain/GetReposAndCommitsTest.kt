@@ -32,7 +32,7 @@ class GetReposAndCommitsTest {
     @BeforeEach
     fun setUp() {
         every { repo.name } returns repoName
-        every { commit.commit.message } returns commitMessage
+        every { commit.message } returns commitMessage
     }
 
     @Test
@@ -52,7 +52,7 @@ class GetReposAndCommitsTest {
 
         getReposAndCommits(None(), this) {
             for (commit in it.getSuccessData().values) {
-                assertEquals(commitMessage, commit[0].commit.message)
+                assertEquals(commitMessage, commit[0].message)
             }
         }
     }
